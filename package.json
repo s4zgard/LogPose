@@ -1,0 +1,26 @@
+{
+  "name": "LogPose",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/s4zgard/LogPose",
+  "author": "Sajjad Ahmed <s4zgard@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node api/index.js",
+    "server": "nodemon api/index.js",
+    "client": "cd client && yarn dev",
+    "dev": "concurrently \"yarn server \" \"yarn client\" "
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5"
+  }
+}
