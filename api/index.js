@@ -18,6 +18,17 @@ app.get("/api", (req, res) => res.send("api is running ...."));
 
 app.use("/api/jobs", jobRouter);
 
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "Not found" });
+});
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Something went wront";
+  res.status(500).json({ success: false, statusCode, message });
+});
+
 app.listen(port, () =>
   console.log("Server is running on port", port, `http://localhost:${port}`)
 );

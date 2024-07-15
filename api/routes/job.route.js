@@ -3,10 +3,12 @@ import {
   createJob,
   deleteJob,
   fetchJobs,
+  getJobById,
+  updateJob,
 } from "../controllers/job.contoller.js";
 
 const router = express.Router();
 
 router.route("/").get(fetchJobs).post(createJob);
-router.route("/:jobId").delete(deleteJob);
+router.route("/:jobId").get(getJobById).put(updateJob).delete(deleteJob);
 export default router;
