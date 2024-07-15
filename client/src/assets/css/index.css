@@ -14,35 +14,35 @@ html {
 
 :root {
   /* colors */
-  --primary-50: #e4ffe0;
-  --primary-100: #c5fdbe;
-  --primary-200: #a0f287;
-  --primary-300: #7adb54;
-  --primary-400: #44c938;
-  --primary-500: #31bc2c;
-  --primary-600: #1f9b14;
-  --primary-700: #1c860e;
-  --primary-800: #0a7413;
-  --primary-900: #0b5404;
+  --primary-50: #e0fcff;
+  --primary-100: #bef8fd;
+  --primary-200: #87eaf2;
+  --primary-300: #54d1db;
+  --primary-400: #38bec9;
+  --primary-500: #2cb1bc;
+  --primary-600: #14919b;
+  --primary-700: #0e7c86;
+  --primary-800: #0a6c74;
+  --primary-900: #044e54;
 
   /* grey */
-  --grey-50: #f8fcf8;
-  --grey-100: #f2f9f1;
-  --grey-200: #e4f0e2;
-  --grey-300: #cde1cb;
-  --grey-400: #9eb894;
-  --grey-500: #678b64;
-  --grey-600: #476947;
-  --grey-700: #335533;
-  --grey-800: #1e3b1e;
-  --grey-900: #0f2a11;
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
   /* rest of the colors */
   --black: #222;
   --white: #fff;
   --red-light: #f8d7da;
   --red-dark: #842029;
-  --green-light: #d1e7d1;
-  --green-dark: #0f510f;
+  --green-light: #d1e7dd;
+  --green-dark: #0f5132;
 
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
@@ -86,8 +86,8 @@ html {
 body {
   background: var(--background-color);
   color: var(--text-color);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
 }
@@ -323,7 +323,7 @@ button:disabled {
 
 .interview {
   background: #e0e8f9;
-  color: #67c509;
+  color: #647acb;
 }
 .declined {
   background: #ffeeee;
