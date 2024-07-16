@@ -5,10 +5,19 @@ import {
   fetchJobs,
   getJobById,
   updateJob,
-} from "../controllers/job.contoller.js";
+} from "../controllers/job.controller.js";
+import {
+  validateJobInput,
+  validateIdParam,
+} from "../middlewares/validationMiddleware.js";
 
 const router = express.Router();
 
-router.route("/").get(fetchJobs).post(createJob);
-router.route("/:jobId").get(getJobById).put(updateJob).delete(deleteJob);
+router.route("/").get(fetchJobs).post(validateJobInput, createJob);
+router
+  .route("/:jobId")
+  .get(validateIdParam, getJobById)
+  .put(validateIdParam, validateJobInput, updateJob)
+  .delete(validateIdParam, deleteJob);
+
 export default router;
