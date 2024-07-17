@@ -1,21 +1,16 @@
 import express from "express";
 import {
-  dropUsers,
-  login,
-  logout,
-  register,
-  remove,
+  getAppStats,
+  getCurrentUser,
+  updateUser,
 } from "../controllers/user.controller.js";
-import {
-  validateLogin,
-  validateRegisterUser,
-} from "../middlewares/validationMiddleware.js";
+import { admin } from "../middlewares/authMiddleware.js";
+import { validateUpdateUser } from "../middlewares/validationMiddleware.js";
+
 const router = express.Router();
 
-// router.get("/drop", dropUsers);
-router.route("/").post(validateRegisterUser, register);
-router.post("/login", validateLogin, login);
-router.get("/logout", logout);
-router.route("/:userId").delete(remove);
+router.get("/current-user", getCurrentUser);
+router.put("/update-user", validateUpdateUser, updateUser);
+router.get("/admin/stats", admin, getAppStats);
 
 export default router;

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import jobRouter from "./routes/job.route.js";
+import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
 import connectDB from "./utils/connectDB.js";
 import errorMiddleware from "./middlewares/errorMiddleware.js";
@@ -24,7 +25,8 @@ const port = process.env.PORT || 5000;
 app.get("/api", (req, res) => res.send("api is running ...."));
 
 app.use("/api/jobs", protect, jobRouter);
-app.use("/api/users", userRouter);
+app.use("/api/users", protect, userRouter);
+app.use("/api/auth", authRouter);
 
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
