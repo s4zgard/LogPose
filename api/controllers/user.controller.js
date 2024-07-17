@@ -4,7 +4,7 @@ import User from "../models/user.model.js";
 
 export const getCurrentUser = async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
-  res.status(200).json(user);
+  res.status(200).json({ user });
 };
 
 export const getAppStats = async (req, res) => {

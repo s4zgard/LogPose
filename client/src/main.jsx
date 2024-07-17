@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { ToastContainer } from "react-toastify";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
+  AddJob,
   Admin,
   AllJobs,
   Dashboard,
@@ -15,7 +16,10 @@ import {
   Stats,
 } from "./pages";
 import App from "./App.jsx";
-import { action as regAction } from "./pages/RegisterPage.jsx";
+import { loader as dashLoader } from "./pages/DashboardPage.jsx";
+import { action as regAction } from "./pages/RegisterPage";
+import { action as loginAction } from "./pages/LoginPage";
+import { action as addJobAction } from "./pages/AddJobPage.jsx";
 import "react-toastify/ReactToastify.css";
 import "./index.css";
 
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement: <Error />,
+    // errorElement: <Error />,
     children: [
       {
         index: true,
@@ -43,6 +47,7 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "register",
@@ -52,7 +57,13 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard isDark={theme} />,
+        loader: dashLoader,
         children: [
+          {
+            index: true,
+            element: <AddJob />,
+            action: addJobAction,
+          },
           {
             path: "all-jobs",
             element: <AllJobs />,
@@ -78,6 +89,6 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <ToastContainer position="top-center" />
+    <ToastContainer position="bottom-right" />
   </React.StrictMode>
 );

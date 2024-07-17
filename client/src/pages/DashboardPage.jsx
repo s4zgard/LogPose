@@ -1,12 +1,26 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { BigSidebar, Navbar, SmallSidebar } from "../components";
 import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+export const loader = async () => {
+  try {
+    const { data } = await axios.get("/api/users/current-user");
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error.message);
+    return redirect("/");
+  }
+};
 
 const DashboardContext = createContext();
 
 const DashboardPage = ({ isDark }) => {
-  const user = { name: "John" };
+  const { user } = useLoaderData();
+
+  const navigate = useNavigate();
 
   const [darkTheme, setDarkTheme] = useState(isDark);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -21,7 +35,9 @@ const DashboardPage = ({ isDark }) => {
     setShowSidebar(!showSidebar);
   };
   const handleLogout = async () => {
-    console.log("User logged out.");
+    navigate("/");
+    await axios.get("/api/auth/logout");
+    toast.success("Logging out...");
   };
 
   const values = {
@@ -42,7 +58,7 @@ const DashboardPage = ({ isDark }) => {
           <div>
             <Navbar />
             <div className="dashboard-page">
-              <Outlet />
+              <Outlet context={{ user }} />
             </div>
           </div>
         </main>
