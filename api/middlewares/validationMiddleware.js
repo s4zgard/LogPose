@@ -70,6 +70,7 @@ export const validateRegisterUser = withValidationErrors([
     .withMessage("Password is required")
     .isLength({ min: 8 })
     .withMessage("Password should be atleast 8 characters."),
+  body("location").notEmpty().withMessage("Location is required."),
   body("lastName").notEmpty().withMessage("LastName is required"),
 ]);
 

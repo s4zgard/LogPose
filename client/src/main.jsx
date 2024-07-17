@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ToastContainer } from "react-toastify";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
   Admin,
@@ -14,6 +15,8 @@ import {
   Stats,
 } from "./pages";
 import App from "./App.jsx";
+import { action as regAction } from "./pages/RegisterPage.jsx";
+import "react-toastify/ReactToastify.css";
 import "./index.css";
 
 const el = document.getElementById("root");
@@ -44,6 +47,7 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+        action: regAction,
       },
       {
         path: "dashboard",
@@ -74,5 +78,6 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer position="top-center" />
   </React.StrictMode>
 );
