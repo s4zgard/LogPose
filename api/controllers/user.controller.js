@@ -36,6 +36,14 @@ export const login = async (req, res) => {
   res.status(200).json({ message: "User logged-in", user: rest });
 };
 
+export const logout = async (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  });
+  res.status(200).json({ message: "User logged out." });
+};
+
 export const remove = async (req, res) => {
   await User.findByIdAndDelete(req.params.userId);
   res.status(200).json({ message: "User deleted" });

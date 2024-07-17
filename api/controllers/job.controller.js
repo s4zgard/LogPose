@@ -2,7 +2,7 @@ import "express-async-errors";
 import Job from "../models/job.model.js";
 
 export const fetchJobs = async (req, res, next) => {
-  const allJobs = await Job.find({});
+  const allJobs = await Job.find({ createdBy: req.user._id });
   res.status(200).json(allJobs);
 };
 
