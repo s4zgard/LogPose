@@ -10,7 +10,7 @@ import {
   validateJobInput,
   validateIdParam,
 } from "../middlewares/validationMiddleware.js";
-
+import { admin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(fetchJobs).post(validateJobInput, createJob);
