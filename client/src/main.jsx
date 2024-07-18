@@ -24,6 +24,7 @@ import { action as editAction } from "./pages/EditJobPage.jsx";
 import { action as regAction } from "./pages/RegisterPage";
 import { action as loginAction } from "./pages/LoginPage";
 import { action as addJobAction } from "./pages/AddJobPage";
+import { action as deleteAction } from "./pages/DeleteJobPage.jsx";
 import "react-toastify/ReactToastify.css";
 import "./index.css";
 
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
             element: <EditJob />,
             loader: editLoader,
             action: editAction,
+          },
+          {
+            path: "delete/:id",
+            action: deleteAction,
           },
         ],
       },
