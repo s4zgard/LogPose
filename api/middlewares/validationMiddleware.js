@@ -34,7 +34,7 @@ export const validateJobInput = withValidationErrors([
   body("position").notEmpty().withMessage("position is required"),
   body("jobLocation").notEmpty().withMessage("job location is required"),
   body("jobStatus")
-    .isIn(["interview", "rejected", "pending"])
+    .isIn(["interview", "declined", "pending"])
     .withMessage("invalid status value"),
   body("jobType")
     .isIn(["full-time", "part-time", "internship"])

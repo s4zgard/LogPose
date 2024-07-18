@@ -7,6 +7,7 @@ import {
   Admin,
   AllJobs,
   Dashboard,
+  EditJob,
   Error,
   Home,
   Landing,
@@ -18,6 +19,8 @@ import {
 import App from "./App.jsx";
 import { loader as dashLoader } from "./pages/DashboardPage";
 import { loader as allJobsLoader } from "./pages/AllJobsPage";
+import { loader as editLoader } from "./pages/EditJobPage.jsx";
+import { action as editAction } from "./pages/EditJobPage.jsx";
 import { action as regAction } from "./pages/RegisterPage";
 import { action as loginAction } from "./pages/LoginPage";
 import { action as addJobAction } from "./pages/AddJobPage";
@@ -81,6 +84,12 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
+          },
+          {
+            path: "edit-page/:id",
+            element: <EditJob />,
+            loader: editLoader,
+            action: editAction,
           },
         ],
       },
