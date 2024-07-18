@@ -10,12 +10,10 @@ export const getCurrentUser = async (req, res) => {
 export const getAppStats = async (req, res) => {
   const users = await User.countDocuments();
   const jobs = await Job.countDocuments();
-  const partTime = await Job.countDocuments({ jobType: "part-time" });
-  const fullTime = await Job.countDocuments({ jobType: "full-time" });
-  const internship = await Job.countDocuments({ jobType: "internship" });
-  res
-    .status(200)
-    .json({ users, jobs, jobType: { partTime, fullTime, internship } });
+  // const partTime = await Job.countDocuments({ jobType: "part-time" });
+  // const fullTime = await Job.countDocuments({ jobType: "full-time" });
+  // const internship = await Job.countDocuments({ jobType: "internship" });
+  res.status(200).json({ users, jobs });
 };
 
 export const updateUser = async (req, res) => {
