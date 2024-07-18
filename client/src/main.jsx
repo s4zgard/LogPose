@@ -16,10 +16,11 @@ import {
   Stats,
 } from "./pages";
 import App from "./App.jsx";
-import { loader as dashLoader } from "./pages/DashboardPage.jsx";
+import { loader as dashLoader } from "./pages/DashboardPage";
+import { loader as allJobsLoader } from "./pages/AllJobsPage";
 import { action as regAction } from "./pages/RegisterPage";
 import { action as loginAction } from "./pages/LoginPage";
-import { action as addJobAction } from "./pages/AddJobPage.jsx";
+import { action as addJobAction } from "./pages/AddJobPage";
 import "react-toastify/ReactToastify.css";
 import "./index.css";
 
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
           {
             path: "all-jobs",
             element: <AllJobs />,
+            loader: allJobsLoader,
           },
           {
             path: "admin",
