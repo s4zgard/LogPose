@@ -10,7 +10,8 @@
     "start": "node api/index.js",
     "server": "nodemon api/index.js",
     "client": "cd client && yarn dev",
-    "dev": "concurrently \"yarn server \" \"yarn client\" "
+    "dev": "concurrently \"yarn server \" \"yarn client\" ",
+    "build": "yarn"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

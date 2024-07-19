@@ -1,6 +1,12 @@
-import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import {
+  Outlet,
+  redirect,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
-import { BigSidebar, Navbar, SmallSidebar } from "../components";
+import { BigSidebar, Loading, Navbar, SmallSidebar } from "../components";
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -49,6 +55,9 @@ const DashboardPage = ({ isDark }) => {
     handleLogout,
   };
 
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === "loading";
+
   return (
     <DashboardContext.Provider value={values}>
       <Wrapper>
@@ -58,7 +67,7 @@ const DashboardPage = ({ isDark }) => {
           <div>
             <Navbar />
             <div className="dashboard-page">
-              <Outlet context={{ user }} />
+              {isPageLoading ? <Loading /> : <Outlet context={{ user }} />}
             </div>
           </div>
         </main>

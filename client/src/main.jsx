@@ -16,18 +16,18 @@ import {
   Register,
   Stats,
 } from "./pages";
-import App from "./App.jsx";
+import App from "./App";
 import { loader as dashLoader } from "./pages/DashboardPage";
 import { loader as allJobsLoader } from "./pages/AllJobsPage";
 import { loader as adminLoader } from "./pages/AdminPage";
 import { loader as statsLoader } from "./pages/StatsPage";
-import { loader as editLoader } from "./pages/EditJobPage.jsx";
-import { action as editAction } from "./pages/EditJobPage.jsx";
+import { loader as editLoader } from "./pages/EditJobPage";
+import { action as editAction } from "./pages/EditJobPage";
 import { action as regAction } from "./pages/RegisterPage";
 import { action as loginAction } from "./pages/LoginPage";
 import { action as addJobAction } from "./pages/AddJobPage";
-import { action as deleteAction } from "./pages/DeleteJobPage.jsx";
-import { action as profileAction } from "./pages/ProfilePage.jsx";
+import { action as deleteAction } from "./pages/DeleteJobPage";
+import { action as profileAction } from "./pages/ProfilePage";
 import "react-toastify/ReactToastify.css";
 import "./index.css";
 
@@ -46,7 +46,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
+
     children: [
       {
         index: true,
