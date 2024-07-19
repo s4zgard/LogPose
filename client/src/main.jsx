@@ -20,6 +20,7 @@ import App from "./App.jsx";
 import { loader as dashLoader } from "./pages/DashboardPage";
 import { loader as allJobsLoader } from "./pages/AllJobsPage";
 import { loader as adminLoader } from "./pages/AdminPage";
+import { loader as statsLoader } from "./pages/StatsPage";
 import { loader as editLoader } from "./pages/EditJobPage.jsx";
 import { action as editAction } from "./pages/EditJobPage.jsx";
 import { action as regAction } from "./pages/RegisterPage";
@@ -89,6 +90,7 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
+            loader: statsLoader,
           },
           {
             path: "edit-page/:id",

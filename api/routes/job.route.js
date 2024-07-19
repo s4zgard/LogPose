@@ -4,6 +4,7 @@ import {
   deleteJob,
   fetchJobs,
   getJobById,
+  showStats,
   updateJob,
 } from "../controllers/job.controller.js";
 import {
@@ -14,6 +15,7 @@ import { admin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(fetchJobs).post(validateJobInput, createJob);
+router.get("/stats", showStats);
 router
   .route("/:jobId")
   .get(validateIdParam, getJobById)
