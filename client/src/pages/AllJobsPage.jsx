@@ -7,10 +7,20 @@ import { useContext } from "react";
 
 export const loader = async ({ request }) => {
   try {
-    const { data } = await axios.get("/api/jobs");
-    return { jobs: data.jobs };
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+
+    const { data } = await axios.get("/api/jobs", {
+      params,
+    });
+
+    return {
+      data,
+      searchValues: { ...params },
+    };
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    toast.error(error.response.data.msg);
     return error;
   }
 };
@@ -18,9 +28,10 @@ export const loader = async ({ request }) => {
 const AllJobsContext = createContext();
 
 const AllJobsPage = () => {
-  const { jobs } = useLoaderData();
+  const { data, searchValues } = useLoaderData();
+
   return (
-    <AllJobsContext.Provider value={{ jobs }}>
+    <AllJobsContext.Provider value={{ data, searchValues }}>
       <SearchContainer />
       <JobsContainer />
     </AllJobsContext.Provider>
