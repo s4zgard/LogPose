@@ -26,6 +26,7 @@ import { action as regAction } from "./pages/RegisterPage";
 import { action as loginAction } from "./pages/LoginPage";
 import { action as addJobAction } from "./pages/AddJobPage";
 import { action as deleteAction } from "./pages/DeleteJobPage.jsx";
+import { action as profileAction } from "./pages/ProfilePage.jsx";
 import "react-toastify/ReactToastify.css";
 import "./index.css";
 
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <Profile />,
+            action: profileAction,
           },
           {
             path: "stats",

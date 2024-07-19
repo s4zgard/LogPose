@@ -1,4 +1,10 @@
-import { Form, Link, redirect, useNavigation } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { FormRow, Logo } from "../components";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -19,9 +25,24 @@ export const action = async ({ request }) => {
 };
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === "submitting";
+
+  const loginDemoUser = async () => {
+    const data = {
+      email: "test@test.com",
+      password: "secret123",
+    };
+    try {
+      await axios.post("/api/auth/login", data);
+      toast.success("take a test drive");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+    }
+  };
 
   return (
     <Wrapper>
@@ -38,9 +59,9 @@ const RegisterPage = () => {
         <button type="submit" disabled={isSubmitting} className="btn btn-block">
           {isSubmitting ? "Logging In ..." : "Login"}
         </button>
-        <button type="button" className="btn btn-block">
+        {/* <button type="button" className="btn btn-block" onClick={loginDemoUser}>
           Explore the app
-        </button>
+        </button> */}
         <p>
           Not a member?
           <Link to="/register" className="member-btn">

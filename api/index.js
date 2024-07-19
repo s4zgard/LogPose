@@ -1,7 +1,11 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import cloudinary from "cloudinary";
 import jobRouter from "./routes/job.route.js";
 import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
@@ -10,8 +14,16 @@ import errorMiddleware from "./middlewares/errorMiddleware.js";
 import { protect } from "./middlewares/authMiddleware.js";
 
 dotenv.config();
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 connectDB();
 const app = express();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 app.use(express.json());
 app.use(cookieParser());
